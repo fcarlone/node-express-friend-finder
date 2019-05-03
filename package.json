@@ -1,0 +1,24 @@
+{
+  "name": "express-friend-finder",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fcarlone/node-express-friend-finder.git"
+  },
+  "author": "Frank Carlone",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fcarlone/node-express-friend-finder/issues"
+  },
+  "homepage": "https://github.com/fcarlone/node-express-friend-finder#readme",
+  "dependencies": {
+    "express": "^4.16.4",
+    "materialize-css": "^1.0.0"
+  }
+}
