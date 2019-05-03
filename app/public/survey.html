@@ -19,10 +19,26 @@
   <p>survey page</p>
 
   <!-- User Form -->
+  <!-- Get Name -->
+  <form>
+    <div class="form-group">
+      <label for="input-name">Name (Required)</label>
+      <input type="text" class="form-control" id="input-name">
+    </div>
+  </form>
+  <!-- Get Photo -->
+  <form>
+    <div class="form-group">
+      <label for="input-photo">Link to Photo Image (Required)</label>
+      <input type="text" class="form-control" id="input-photo">
+    </div>
+  </form>
   <!-- List Questions -->
   <div id="finder-questions"></div>
   <!-- Submit Button -->
+  <br>
   <button type="submit" id="submit-btn" class="btn btn-primary">Submit</button>
+  <!-- End User Form -->
 </body>
 
 <script type="text/javascript">
@@ -32,37 +48,38 @@
     { surveyQuestion: 'The first question 1' },
     { surveyQuestion: 'The second question 2' },
     { surveyQuestion: 'The third question 3' },
+    { surveyQuestion: 'The four question 4' },
+    { surveyQuestion: 'The five question 5' },
+    { surveyQuestion: 'The six question 6' },
+    { surveyQuestion: 'The seven question 7' },
+    { surveyQuestion: 'The eight question 8' },
+    { surveyQuestion: 'The nine question 9' },
+    { surveyQuestion: 'The ten question 10' }
   ]
 
   // Create questions tag
   const listQuestions = (arr) => {
     let counter = 1;
-    let i = 1;
     arr.forEach((question) => {
-      let questionDiv = $(`<div class="custom-input"> </div>`)
-      $(questionDiv).attr('data-question', i)
+      let questionDiv = $(`<div class="custom-input"></div>`)
       let questionHeader = (`<br><h3>Question ${counter}</h3>`)
       let questionSurvey = (`<h5>${question.surveyQuestion}</h5>`)
-      $(questionDiv).append(questionHeader, questionSurvey, radioButtonsBuild)
-
+      $(questionDiv).append(questionHeader, questionSurvey, optionButtonsBuild)
       $("#finder-questions").append(questionDiv)
-
       counter++;
-      i++
     })
-
   };
 
   // Radio Buttons
-  let radioButtonsBuild = (
+  let optionButtonsBuild = (
     `
     <select class="custom-select custom-select-sm">
       <option selected>Open this select menu</option>
-      <option value="1">1 agree</option>
+      <option value="1">1 Strongly Agree</option>
       <option value="2">2</option>
       <option value="3">3</option>
       <option value="4">4</option>
-      <option value="5">5 disagree</option>
+      <option value="5">5 Strongly Disagree</option>
     </select>
     <br>
     `
@@ -72,14 +89,20 @@
   // On-click event
   $("#submit-btn").on("click", function (event) {
     event.preventDefault();
-    console.log('on click event')
+    let results = $(".custom-select")
+    let scoreArray = []
 
-    // console.log(i)
-    let result = $(".custom-select")
-    console.log(result[0].value)
-    console.log(result[1].value)
-    console.log(result[2].value)
+    for (let i = 0; i < results.length; i++) {
+      scoreArray.push(results[i].value)
+    }
 
+    // Build user profile
+    let userProfile = {
+      name: $("#input-name").val().trim(),
+      photo: $("#input-photo").val().trim(),
+      scores: scoreArray
+    };
+    console.log(userProfile)
   });
 
 
