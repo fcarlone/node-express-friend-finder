@@ -65,7 +65,7 @@
       let questionDiv = $(`<div class="custom-input"></div>`)
       let questionHeader = (`<br><h3>Question ${counter}</h3>`)
       let questionSurvey = (`<h5>${question.surveyQuestion}</h5>`)
-      $(questionDiv).append(questionHeader, questionSurvey, optionButtonsBuild)
+      $(questionDiv).append(questionHeader, questionSurvey, optionBuild)
       $("#finder-questions").append(questionDiv)
       counter++;
     });
@@ -73,10 +73,10 @@
   };
 
   // Options drill-down
-  let optionButtonsBuild = (
+  let optionBuild = (
     `
     <select class="custom-select custom-select-sm">
-      <option selected>Open this select menu</option>
+      <option selected>Select an Option</option>
       <option value="1">1 Strongly Agree</option>
       <option value="2">2</option>
       <option value="3">3</option>
