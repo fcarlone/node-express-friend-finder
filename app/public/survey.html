@@ -60,6 +60,7 @@
   // Create questions tag
   const listQuestions = (arr) => {
     let counter = 1;
+
     arr.forEach((question) => {
       let questionDiv = $(`<div class="custom-input"></div>`)
       let questionHeader = (`<br><h3>Question ${counter}</h3>`)
@@ -67,10 +68,11 @@
       $(questionDiv).append(questionHeader, questionSurvey, optionButtonsBuild)
       $("#finder-questions").append(questionDiv)
       counter++;
-    })
+    });
+
   };
 
-  // Radio Buttons
+  // Options drill-down
   let optionButtonsBuild = (
     `
     <select class="custom-select custom-select-sm">
@@ -90,8 +92,9 @@
   $("#submit-btn").on("click", function (event) {
     event.preventDefault();
     let results = $(".custom-select")
-    let scoreArray = []
 
+    // Build score array
+    let scoreArray = []
     for (let i = 0; i < results.length; i++) {
       scoreArray.push(results[i].value)
     }
