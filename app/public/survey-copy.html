@@ -37,33 +37,42 @@
   // Create questions tag
   const listQuestions = (arr) => {
     let counter = 1;
-    let i = 1;
     arr.forEach((question) => {
-      let questionDiv = $(`<div class="custom-input"> </div>`)
-      $(questionDiv).attr('data-question', i)
+      let questionDiv = $(`<div> </div>`)
+      questionDiv.attr("data-question", counter)
       let questionHeader = (`<br><h3>Question ${counter}</h3>`)
       let questionSurvey = (`<h5>${question.surveyQuestion}</h5>`)
       $(questionDiv).append(questionHeader, questionSurvey, radioButtonsBuild)
-
       $("#finder-questions").append(questionDiv)
-
       counter++;
-      i++
     })
-
   };
 
-  // Radio Buttons
+  // Radion Buttons
   let radioButtonsBuild = (
     `
-    <select class="custom-select custom-select-sm">
-      <option selected>Open this select menu</option>
-      <option value="1">1 agree</option>
-      <option value="2">2</option>
-      <option value="3">3</option>
-      <option value="4">4</option>
-      <option value="5">5 disagree</option>
-    </select>
+    <div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+        <label class="form-check-label" for="inlineRadio1">1 (Strongly Disagree)</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+        <label class="form-check-label" for="inlineRadio2">2</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3">
+        <label class="form-check-label" for="inlineRadio3">3</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio4" value="option4">
+        <label class="form-check-label" for="inlineRadio4">4</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio5" value="option5">
+        <label class="form-check-label" for="inlineRadio5">5 (Strongly Agree)</label>
+      </div>
+    </div>
     <br>
     `
   );
@@ -73,14 +82,13 @@
   $("#submit-btn").on("click", function (event) {
     event.preventDefault();
     console.log('on click event')
+    let result = $(this)
 
-    // console.log(i)
-    let result = $(".custom-select")
-    console.log(result[0].value)
-    console.log(result[1].value)
-    console.log(result[2].value)
+    console.log(result)
 
-  });
+
+
+  })
 
 
   listQuestions(finderQuestionsArray)
