@@ -11,6 +11,7 @@ module.exports = function (app) {
 
   // API POST requests
   app.post("/api/friends", function (req, res) {
+    console.log(req.body)
     res.json(friendsTable);
   })
 };
