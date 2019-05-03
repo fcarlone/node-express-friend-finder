@@ -16,7 +16,7 @@ module.exports = function (app) {
 
   // Catch-all - no matching route default to home
   app.get("*", function (req, res) {
-    res.sendFile(path.__dirname, "../public/home.html")
+    res.sendFile(path.join(__dirname, "../public/home.html"))
   });
 
 };
