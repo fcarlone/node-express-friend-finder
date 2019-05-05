@@ -72,7 +72,7 @@
 
   };
 
-  // Options drill-down
+  // Bootstrap options drill-down
   let optionsBuild = (
     `
     <select class="custom-select custom-select-sm">
@@ -94,7 +94,8 @@
     let results = $(".custom-select")
 
     // Build score array
-    let scoreArray = []
+    let scoreArray = [];
+
     for (let i = 0; i < results.length; i++) {
       scoreArray.push(results[i].value)
     };
