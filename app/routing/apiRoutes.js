@@ -17,9 +17,6 @@ module.exports = function (app) {
 
     let data = handleFriendFinderLogic(userInput)
     res.json(data);
-
-    console.log('friend Match function:', data)
-
   });
 
   // Return friend match
@@ -54,9 +51,7 @@ module.exports = function (app) {
       };
 
       console.log('------------------')
-    })
-
-    console.log('friend match', friendMatch)
+    });
     return friendMatch;
   }
 };

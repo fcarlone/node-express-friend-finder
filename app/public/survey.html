@@ -35,10 +35,32 @@
   </form>
   <!-- List Questions -->
   <div id="finder-questions"></div>
-  <!-- Submit Button -->
+  <!-- Submit Button & launch modal -->
   <br>
-  <button type="submit" id="submit-btn" class="btn btn-primary">Submit</button>
+  <button type="submit" id="submit-btn" class="btn btn-primary" data-toggle="modal"
+    data-target="#exampleModal">Submit</button>
   <!-- End User Form -->
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </body>
 
 <script type="text/javascript">
@@ -109,6 +131,16 @@
     // Handle POST: URL, data and callback function
     $.post("/api/friends", userProfile, function (data) {
       console.log('handle api user profile and return match', data)
+      console.log('data name', data.name);
+      console.log('data pic', data.photo);
+      console.log('data scores', data.scores);
+
+      let modalDiv = $("<div>").addClass("modal-body-container")
+      let modalName = $(`<p>${data.name}</p>`);
+      let modalPhoto = $("<img>").attr("src", data.photo);
+      $(modalDiv).append(modalName, modalPhoto);
+      $(".modal-body").append(modalDiv);
+
     })
   });
 
