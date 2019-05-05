@@ -180,6 +180,11 @@
         $("#input-photo").val("");
         scoreArray = [];
 
+        // Reset drill-down choices
+        $(".chosen-container option").prop("selected", function () {
+          return this.defaultSelected;
+        })
+
       });
     }
   };
