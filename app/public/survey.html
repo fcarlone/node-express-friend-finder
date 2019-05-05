@@ -37,8 +37,7 @@
   <div id="finder-questions"></div>
   <!-- Submit Button & launch modal -->
   <br>
-  <button type="submit" id="submit-btn" class="btn btn-primary" data-toggle="modal"
-    data-target="#exampleModal">Submit</button>
+  <button type="submit" id="submit-btn" class="btn btn-primary">Submit</button>
   <!-- End User Form -->
 
   <!-- Modal -->
@@ -91,7 +90,6 @@
       $("#finder-questions").append(questionDiv)
       counter++;
     });
-
   };
 
   // Bootstrap options drill-down
@@ -123,47 +121,37 @@
     for (let i = 0; i < results.length; i++) {
       scoreArray.push(results[i].value)
     };
-    console.log('scores Array ', scoreArray.includes(''))
+
     // handle survey validation
     handleSurveyValidation(userName, userPhoto, scoreArray)
-
-
-    // // Build user profile
-    let userProfile = {
-      name: $("#input-name").val().trim(),
-      photo: $("#input-photo").val().trim(),
-      scores: scoreArray
-    };
-    // console.log(userProfile)
-
-    // Handle POST: URL, data and callback function
-    $.post("/api/friends", userProfile, function (data) {
-      console.log('handle api user profile and return match', data)
-      console.log('data name', data.name);
-      console.log('data pic', data.photo);
-      console.log('data scores', data.scores);
-
-      let modalDiv = $("<div>").addClass("modal-body-container")
-      let modalName = $(`<p>${data.name}</p>`);
-      let modalPhoto = $("<img>").attr("src", data.photo);
-      $(modalDiv).append(modalName, modalPhoto);
-      $(".modal-body").append(modalDiv);
-
-    })
   });
 
   const handleSurveyValidation = (name, photo, scores) => {
-    console.log(name, photo, scores)
-    console.log(Array.isArray(scores))
-    console.log(typeof (scores))
-
     if (name === '' || photo === '' || scores.includes('')) {
-      console.log('undefined')
-      $().alert();
+      console.log('stop')
+      alert("Alert window message")
     } else {
       console.log('good to go')
+      // // Build user profile
+      let userProfile = {
+        name: $("#input-name").val().trim(),
+        photo: $("#input-photo").val().trim(),
+        scores: scores
+      };
+
+      // Handle POST: URL, data and callback function
+      $.post("/api/friends", userProfile, function (data) {
+        let modalDiv = $("<div>").addClass("modal-body-container")
+        let modalName = $(`<p>${data.name}</p>`);
+        let modalPhoto = $("<img>").attr("src", data.photo);
+        $(modalDiv).append(modalName, modalPhoto);
+        $(".modal-body").append(modalDiv);
+
+        // Modal 
+        $("#exampleModal").modal();
+      });
     }
-  }
+  };
 
   listQuestions(finderQuestionsArray)
 </script>
