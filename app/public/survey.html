@@ -112,6 +112,10 @@
   // On-click event
   $("#submit-btn").on("click", function (event) {
     event.preventDefault();
+
+    // Survey data
+    let userName = $("#input-name").val().trim();
+    let userPhoto = $("#input-photo").val().trim();
     let results = $(".custom-select")
 
     // Build score array
@@ -119,14 +123,18 @@
     for (let i = 0; i < results.length; i++) {
       scoreArray.push(results[i].value)
     };
+    console.log('scores Array ', scoreArray.includes(''))
+    // handle survey validation
+    handleSurveyValidation(userName, userPhoto, scoreArray)
 
-    // Build user profile
+
+    // // Build user profile
     let userProfile = {
       name: $("#input-name").val().trim(),
       photo: $("#input-photo").val().trim(),
       scores: scoreArray
     };
-    console.log(userProfile)
+    // console.log(userProfile)
 
     // Handle POST: URL, data and callback function
     $.post("/api/friends", userProfile, function (data) {
@@ -143,6 +151,19 @@
 
     })
   });
+
+  const handleSurveyValidation = (name, photo, scores) => {
+    console.log(name, photo, scores)
+    console.log(Array.isArray(scores))
+    console.log(typeof (scores))
+
+    if (name === '' || photo === '' || scores.includes('')) {
+      console.log('undefined')
+      $().alert();
+    } else {
+      console.log('good to go')
+    }
+  }
 
   listQuestions(finderQuestionsArray)
 </script>
