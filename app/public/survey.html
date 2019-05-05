@@ -87,7 +87,6 @@
     `
   );
 
-
   // On-click event
   $("#submit-btn").on("click", function (event) {
     event.preventDefault();
@@ -95,7 +94,6 @@
 
     // Build score array
     let scoreArray = [];
-
     for (let i = 0; i < results.length; i++) {
       scoreArray.push(results[i].value)
     };
@@ -110,10 +108,9 @@
 
     // Handle POST: URL, data and callback function
     $.post("/api/friends", userProfile, function (data) {
-      console.log('handle api user profile')
+      console.log('handle api user profile and return match', data)
     })
   });
-
 
   listQuestions(finderQuestionsArray)
 </script>

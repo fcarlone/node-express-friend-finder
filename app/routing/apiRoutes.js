@@ -15,25 +15,10 @@ module.exports = function (app) {
     // User input array
     let userInput = req.body
 
-    handleFriendFinderLogic(userInput)
+    let data = handleFriendFinderLogic(userInput)
+    res.json(data);
 
-    // Friends data array
-    // let friendsDataArray = friendsTable
-
-    // friendsDataArray.forEach((friend) => {
-    //   let i = 0;
-    //   console.log(friend.name)
-    //   friend.scores.forEach((score) => {
-
-    //     console.log(score);
-    //     console.log(userInput.scores[i])
-    //     console.log(`${friend.name} score: ${score} - User input score ${userInput.scores[i]} = ${score - userInput.scores[i]}`)
-    //     i++
-    //   });
-    //   console.log('------------------')
-    // })
-    // res.json(friendsTable);
-    // friendsTable.push(req.body)
+    console.log('friend Match function:', data)
 
   });
 
@@ -69,9 +54,9 @@ module.exports = function (app) {
       };
 
       console.log('------------------')
-
     })
 
     console.log('friend match', friendMatch)
+    return friendMatch;
   }
 };
