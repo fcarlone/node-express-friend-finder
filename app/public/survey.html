@@ -138,8 +138,9 @@
     // Survey data
     let userName = $("#input-name").val().trim();
     let userPhoto = $("#input-photo").val().trim();
-    let results = $(".custom-select")
+    let results = $(".custom-select-sm")
 
+    // console.log('results', results)
     // Build score array
     let scoreArray = [];
     for (let i = 0; i < results.length; i++) {
@@ -152,19 +153,19 @@
 
   const handleSurveyValidation = (name, photo, scores) => {
     if (name === '' || photo === '' || scores.includes('')) {
-      console.log('stop')
-      alert("Alert window message")
+      // Alert incomplete survey message
+      alert("Please complete all fields before submitting!")
     } else {
-      console.log('good to go')
       // // Build user profile
       let userProfile = {
-        name: $("#input-name").val().trim(),
-        photo: $("#input-photo").val().trim(),
+        name: name,
+        photo: photo,
         scores: scores
       };
 
       // Handle POST: URL, data and callback function
       $.post("/api/friends", userProfile, function (data) {
+        $(".modal-body").text("");
         let modalDiv = $("<div>").addClass("modal-body-container")
         let modalName = $(`<h4><strong>${data.name}</strong></h4>`);
         let modalPhoto = $("<img>").attr("src", data.photo);
@@ -173,6 +174,12 @@
 
         // Modal 
         $("#exampleModal").modal();
+
+        // Clear the data;
+        $("#input-name").val("");
+        $("#input-photo").val("");
+        scoreArray = [];
+
       });
     }
   };
