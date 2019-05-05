@@ -11,8 +11,7 @@
   <script src="https://code.jquery.com/jquery.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 
-
-  <title>Document</title>
+  <title>Survey</title>
 </head>
 
 <body>
@@ -46,7 +45,7 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <h4 class="modal-title" id="exampleModalLabel">Congratulations, your friend is a Muppet.</h4>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -142,7 +141,7 @@
       // Handle POST: URL, data and callback function
       $.post("/api/friends", userProfile, function (data) {
         let modalDiv = $("<div>").addClass("modal-body-container")
-        let modalName = $(`<p>${data.name}</p>`);
+        let modalName = $(`<h4><strong>${data.name}</strong></h4>`);
         let modalPhoto = $("<img>").attr("src", data.photo);
         $(modalDiv).append(modalName, modalPhoto);
         $(".modal-body").append(modalDiv);
