@@ -15,46 +15,70 @@
 </head>
 
 <body>
-  <p>survey page</p>
 
-  <!-- User Form -->
-  <!-- Get Name -->
-  <form>
-    <div class="form-group">
-      <label for="input-name">Name (Required)</label>
-      <input type="text" class="form-control" id="input-name">
-    </div>
-  </form>
-  <!-- Get Photo -->
-  <form>
-    <div class="form-group">
-      <label for="input-photo">Link to Photo Image (Required)</label>
-      <input type="text" class="form-control" id="input-photo">
-    </div>
-  </form>
-  <!-- List Questions -->
-  <div id="finder-questions"></div>
-  <!-- Submit Button & launch modal -->
-  <br>
-  <button type="submit" id="submit-btn" class="btn btn-primary">Submit</button>
-  <!-- End User Form -->
 
-  <!-- Modal -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h4 class="modal-title" id="exampleModalLabel">Congratulations, your friend is a Muppet.</h4>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
+  <div class="container">
+    <br>
+    <h2><strong>Survey Questions</strong></h2>
+    <hr>
+    <!-- User Form -->
+    <h3><strong>About You</strong></h3>
+    <!-- Get Name -->
+    <form>
+      <div class="form-group">
+        <label for="input-name">
+          <h5>Name (Required)</h5>
+        </label>
+        <input type="text" class="form-control" id="input-name">
+      </div>
+    </form>
+    <!-- Get Photo -->
+    <form>
+      <div class="form-group">
+        <label for="input-photo">
+          <h5>Link to Photo Image (Required)</h5>
+        </label>
+        <input type="text" class="form-control" id="input-photo">
+      </div>
+    </form>
+    <hr>
+    <!-- List Questions -->
+    <div id="finder-questions"></div>
+    <!-- Submit Button -->
+    <br>
+    <button style="background-color: #337ab7;" type="submit" id="submit-btn" class="btn btn-primary btn-lg btn-block"><i
+        class="fa fa-check-square-o"></i>
+      Submit</button>
+    <!-- End User Form -->
 
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+    <!-- Footer -->
+    <hr>
+    <br>
+    <footer class="footer">
+      <div class="container">
+        <p><a style="color: #337ab7;" href="/">Home</a> | <a style="color: #337ab7;" href="/api/friends">API Friend
+            List</a> | <a style="color: #337ab7;" href="https://github.com/fcarlone/node-express-friend-finder">GitHub
+            Repo</a>
+      </div>
+    </footer>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title" id="exampleModalLabel">Congratulations, your friend is a Muppet.</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
         </div>
       </div>
     </div>
@@ -83,7 +107,8 @@
 
     arr.forEach((question) => {
       let questionDiv = $(`<div class="questions-container"></div>`)
-      let questionHeader = (`<br><h3>Question ${counter}</h3>`)
+      questionDiv.attr('data-question', counter)
+      let questionHeader = (`<br><h4><strong>Question ${counter}</strong></h4>`)
       let questionSurvey = (`<h5>${question.surveyQuestion}</h5>`)
       $(questionDiv).append(questionHeader, questionSurvey, optionsBuild)
       $("#finder-questions").append(questionDiv)
@@ -94,7 +119,7 @@
   // Bootstrap options drill-down
   let optionsBuild = (
     `
-    <select class="custom-select custom-select-sm">
+    <select class="chosen-container custom-select-sm">
       <option value="" disabled selected>Select an Option</option>
       <option value="1">1 Strongly Agree</option>
       <option value="2">2</option>
