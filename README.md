@@ -9,8 +9,7 @@ Go to the Survey section and answer the following ten questions.  The applicatio
 ### Installation Instructions:  
 1. Clone or download the GitHub repository
 2. Open your terminal  
-3. Change the current working directory to the location where you want the cloned directory to be made  
-4. Paste the URL you copied in Step 1.
+3. Paste the URL you copied in Step 1.    
 5. Go to the directory where the repository was created and install the packages associated with this application  
 `npm install`  
 6. Run the application by using the command:   
