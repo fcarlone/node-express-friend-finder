@@ -15,8 +15,12 @@ module.exports = function (app) {
     // User input array
     let userInput = req.body
 
+    // Find best friend match function
     let data = handleFriendFinderLogic(userInput)
     res.json(data);
+
+    // Push user input into API table
+    friendsTable.push(userInput);
   });
 
   // Return friend match
