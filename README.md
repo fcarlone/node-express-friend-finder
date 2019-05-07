@@ -19,7 +19,7 @@ Go to the Survey section and answer the following ten questions.  The applicatio
 `http://localhost:3000/`
 
 
-#### Software/libraries used for this application:
+### Software/libraries used for this application:
 Node.js - to execute the application in the terminal (outside the browser)  
 Express.js - used for building the web application and creating the application's API  
 JavaScript - for the applications logic  
@@ -27,6 +27,6 @@ Bootstrap - for structuring the user questions format and making the application
 jQuery - for HTML/DOM manipulation
 
 
-#### Heroku Deployment:  
+### Heroku Deployment:  
 The application is deployed using the Heroku cloud platform.  You can visit the site at:  
 [https://fcarlone-friend-finder.herokuapp.com/](https://fcarlone-friend-finder.herokuapp.com/)
