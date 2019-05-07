@@ -1,6 +1,6 @@
 # Friend Finder - Node & Express
 
-## Full-stack application that evaluates the results from a survey, then compares the answers with those from other users.  
+## Full-stack application that evaluates the anwsers from a survey, then compares the answers with those from other users.  
 
 
 ### Application Instructions:  
