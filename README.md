@@ -19,10 +19,10 @@ Go to the Survey section and answer the following ten questions.  The applicatio
 
 
 ### Software/libraries used for this application:
-Node.js - to execute the application in the terminal (outside the browser)  
+Node.js - used for developing the server-side of the application  
 Express.js - used for building the web application and creating the application's API  
 JavaScript - for the applications logic  
-Bootstrap - for structuring the user questions format and making the application responsive  
+Bootstrap - for structuring the user questions and making the application responsive  
 jQuery - for HTML/DOM manipulation
 
 
