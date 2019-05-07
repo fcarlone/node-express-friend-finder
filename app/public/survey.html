@@ -170,6 +170,7 @@
         let modalDiv = $("<div>").addClass("modal-body-container")
         let modalName = $(`<h4><strong>${data.name}</strong></h4>`);
         let modalPhoto = $("<img>").attr("src", data.photo);
+        modalPhoto.attr("alt", "User image missing");
         $(modalDiv).append(modalName, modalPhoto);
         $(".modal-body").append(modalDiv);
 
